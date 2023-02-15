@@ -22,11 +22,11 @@ function Calendar() {
   const calendarArr = getCalendar(selectedDate.year, selectedDate.month);
 
   const prevBtnDateHandler = () => {
-    if (selectedDate.month <= 1) {
+    if (selectedDate.month <= 0) {
       return setSelectedDate((prev) => {
         return {
           year: prev.year - 1,
-          month: 12,
+          month: 11,
         };
       });
     }
@@ -39,11 +39,11 @@ function Calendar() {
   };
 
   const nextBtnDateHandler = () => {
-    if (selectedDate.month >= 12) {
+    if (selectedDate.month >= 11) {
       return setSelectedDate((prev) => {
         return {
           year: prev.year + 1,
-          month: 1,
+          month: 0,
         };
       });
     }
@@ -90,7 +90,6 @@ const styles = StyleSheet.create({
   },
   calendarEl: {
     width: screenWidth / 7,
-    borderWidth: 1,
   },
 });
 
