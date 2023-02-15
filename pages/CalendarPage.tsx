@@ -1,15 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
+import Calendar from "../components/Calendar";
 
 function CalendarScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>CalendarScreen!</Text>
-    </View>
-  );
+  return <Calendar />;
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-});
 
 export default CalendarScreen;
