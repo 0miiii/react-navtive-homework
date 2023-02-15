@@ -1,7 +1,7 @@
-const getCalendar = () => {
+const getCalendar = (year: number, month: number) => {
   const dateArr = ["Sun", "Mon", "The", "Wed", "Thu", "Fri", "Sat"];
-  const firstDayOfSelectedMonth = 2;
-  const lastDateOfSelectedMonth = 31;
+  const firstDayOfSelectedMonth = new Date(year, month, 1).getDay();
+  const lastDateOfSelectedMonth = new Date(year, month + 1, 0).getDate();
 
   for (let i = 0; i < firstDayOfSelectedMonth; i++) {
     dateArr.push("");
