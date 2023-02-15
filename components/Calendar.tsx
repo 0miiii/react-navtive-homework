@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -74,6 +74,10 @@ function Calendar() {
       };
     });
   };
+
+  useEffect(() => {
+    setSelected("");
+  }, [selectedDate]);
 
   return (
     <View style={styles.container}>
