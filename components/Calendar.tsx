@@ -1,5 +1,13 @@
 import { StyleSheet, Text, View, Button } from "react-native";
 
+const CalendarEl: React.FC<{ el: string }> = ({ el }) => {
+  return (
+    <View>
+      <Text>{el}</Text>
+    </View>
+  );
+};
+
 function Calendar() {
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth() + 1;
