@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, Dimensions } from "react-native";
+import getCalendar from "../utils/getCalendar";
 
 const CalendarEl: React.FC<{ el: string }> = ({ el }) => {
   return (
-    <View>
+    <View style={styles.calendarEl}>
       <Text>{el}</Text>
     </View>
   );
@@ -11,11 +12,14 @@ const CalendarEl: React.FC<{ el: string }> = ({ el }) => {
 
 const currentDate = {
   year: new Date().getFullYear(),
-  month: new Date().getMonth() + 1,
+  month: new Date().getMonth(),
 };
+
+const screenWidth = Dimensions.get("window").width;
 
 function Calendar() {
   const [selectedDate, setSelectedDate] = useState(currentDate);
+  const calendarArr = getCalendar(selectedDate.year, selectedDate.month);
 
   const prevBtnDateHandler = () => {
     if (selectedDate.month <= 1) {
@@ -55,8 +59,13 @@ function Calendar() {
     <View style={styles.container}>
       <View style={styles.calendarNav}>
         <Button title="<" onPress={prevBtnDateHandler} />
-        <Text>{`${selectedDate.month} ${selectedDate.year}`}</Text>
+        <Text>{`${selectedDate.month + 1} ${selectedDate.year}`}</Text>
         <Button title=">" onPress={nextBtnDateHandler} />
+      </View>
+      <View style={styles.calendarBody}>
+        {calendarArr.map((el, idx) => (
+          <CalendarEl key={idx} el={el} />
+        ))}
       </View>
     </View>
   );
@@ -73,6 +82,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    borderWidth: 1,
+  },
+  calendarBody: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  calendarEl: {
+    width: screenWidth / 7,
     borderWidth: 1,
   },
 });
