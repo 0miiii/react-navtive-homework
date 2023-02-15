@@ -1,42 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import HomeScreen from "./pages/HomePage";
+import CalendarScreen from "./pages/CalendarPage";
+import LibraryScreen from "./pages/LibraryPage";
+import MypageScreen from "./pages/MyPage";
+
 const Tab = createBottomTabNavigator();
-
-function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function CalendarScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>CalendarScreen!</Text>
-    </View>
-  );
-}
-
-function LibraryScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>LibraryScreen!</Text>
-    </View>
-  );
-}
-
-function MypageScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>MypageScreen!</Text>
-    </View>
-  );
-}
 
 export default function App() {
   return (
@@ -85,7 +57,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-});
