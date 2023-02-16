@@ -1,36 +1,13 @@
 import { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
-import getWeek from "../utils/getWeek";
+import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 
-const CalendarEl: React.FC<{ el: string; selected?: string }> = ({
-  el,
-  selected,
-}) => {
-  return (
-    <View
-      style={[
-        styles.calendarEl,
-        selected === el && selected !== "" && styles.selected,
-      ]}
-    >
-      <Text>{el}</Text>
-    </View>
-  );
-};
+import getWeek from "../utils/getWeek";
+import CalendarEl from "./CalendarEl";
 
 const currentDate = {
   year: new Date().getFullYear(),
   month: new Date().getMonth(),
 };
-
-const screenWidth = Dimensions.get("window").width;
 
 function WeeklyCalendar() {
   const dayElements = ["Sun", "Mon", "The", "Wed", "Thu", "Fri", "Sat"];
@@ -94,18 +71,6 @@ const styles = StyleSheet.create({
   calendarBody: {
     flexDirection: "row",
     flexWrap: "wrap",
-  },
-  calendarEl: {
-    width: screenWidth / 7,
-    height: screenWidth / 7,
-    padding: 10,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  selected: {
-    borderWidth: 1,
-    borderRadius: screenWidth / 7 / 2,
-    borderColor: "blue",
   },
 });
 
