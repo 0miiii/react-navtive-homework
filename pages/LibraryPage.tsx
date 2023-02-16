@@ -1,15 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
+import WeeklyCalendar from "../components/WeeklyCalendar";
 
 function LibraryScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>LibraryScreen!</Text>
-    </View>
-  );
+  return <WeeklyCalendar />;
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-});
 
 export default LibraryScreen;
