@@ -1,24 +1,27 @@
+type TdateArr = string[][];
+
 const getMonth = (year: number, month: number) => {
-  const dateArr = [];
+  const dateArr: TdateArr = [[], [], []];
   const firstDayOfSelectedMonth = new Date(year, month, 1).getDay();
   const lastDateOfSelectedMonth = new Date(year, month + 1, 0).getDate();
   const lastDateOfSelectedPrevMonth = new Date(year, month, 0).getDate();
 
   for (let i = firstDayOfSelectedMonth; i > 0; i--) {
     const lastMonthDate = lastDateOfSelectedPrevMonth - i + 1;
-    dateArr.push(lastMonthDate.toString());
+    dateArr[0].push(lastMonthDate.toString());
   }
 
   for (let i = 1; i <= lastDateOfSelectedMonth; i++) {
-    dateArr.push(i.toString());
+    dateArr[1].push(i.toString());
   }
 
-  const remainderOfDivisionBySeven = dateArr.length % 7;
+  const remainderOfDivisionBySeven =
+    (dateArr[0].length + dateArr[1].length) % 7;
 
   if (remainderOfDivisionBySeven !== 0) {
     const blank = 7 - remainderOfDivisionBySeven;
     for (let i = 1; i <= blank; i++) {
-      dateArr.push(i.toString());
+      dateArr[2].push(i.toString());
     }
   }
 
