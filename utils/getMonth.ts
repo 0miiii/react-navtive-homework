@@ -1,12 +1,12 @@
 const getMonth = (year: number, month: number) => {
-  const dateArr = ["Sun", "Mon", "The", "Wed", "Thu", "Fri", "Sat"];
+  const dateArr = [];
   const firstDayOfSelectedMonth = new Date(year, month, 1).getDay();
   const lastDateOfSelectedMonth = new Date(year, month + 1, 0).getDate();
   const lastDateOfSelectedPrevMonth = new Date(year, month, 0).getDate();
 
   for (let i = firstDayOfSelectedMonth; i > 0; i--) {
-    const test = lastDateOfSelectedPrevMonth - i + 1;
-    dateArr.push(test.toString());
+    const lastMonthDate = lastDateOfSelectedPrevMonth - i + 1;
+    dateArr.push(lastMonthDate.toString());
   }
 
   for (let i = 1; i <= lastDateOfSelectedMonth; i++) {

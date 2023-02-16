@@ -10,6 +10,7 @@ const currentDate = {
 };
 
 function MonthlyCalendar() {
+  const dayElements = ["Sun", "Mon", "The", "Wed", "Thu", "Fri", "Sat"];
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [selected, setSelected] = useState("");
   const calendarArr = getMonth(selectedDate.year, selectedDate.month);
@@ -58,10 +59,15 @@ function MonthlyCalendar() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.calendarNav}>
+      <View style={styles.flex}>
         <Button title="<" onPress={prevBtnDateHandler} />
         <Text>{`${selectedDate.month + 1} ${selectedDate.year}`}</Text>
         <Button title=">" onPress={nextBtnDateHandler} />
+      </View>
+      <View style={styles.flex}>
+        {dayElements.map((dayEl) => (
+          <CalendarEl key={dayEl} el={dayEl} />
+        ))}
       </View>
       <View style={styles.calendarBody}>
         {calendarArr.map((el, idx) => (
@@ -80,7 +86,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  calendarNav: {
+  flex: {
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
