@@ -5,9 +5,10 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 interface Props {
   el: string;
   selected?: string;
+  grey?: boolean;
 }
 
-const CalendarEl: React.FC<Props> = ({ el, selected }) => {
+const CalendarEl: React.FC<Props> = ({ el, selected, grey }) => {
   return (
     <View
       style={[
@@ -15,7 +16,7 @@ const CalendarEl: React.FC<Props> = ({ el, selected }) => {
         selected === el && selected !== "" && styles.selected,
       ]}
     >
-      <Text>{el}</Text>
+      <Text style={grey && styles.grey}>{el}</Text>
     </View>
   );
 };
@@ -32,6 +33,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: SCREEN_WIDTH / 7 / 2,
     borderColor: "blue",
+  },
+  grey: {
+    color: "grey",
   },
 });
 
