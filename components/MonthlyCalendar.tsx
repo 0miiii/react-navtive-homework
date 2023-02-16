@@ -7,7 +7,7 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import getCalendar from "../utils/getCalendar";
+import getMonth from "../utils/getMonth";
 
 const CalendarEl: React.FC<{ el: string; selected: string }> = ({
   el,
@@ -32,10 +32,10 @@ const currentDate = {
 
 const screenWidth = Dimensions.get("window").width;
 
-function Calendar() {
+function MonthlyCalendar() {
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [selected, setSelected] = useState("");
-  const calendarArr = getCalendar(selectedDate.year, selectedDate.month);
+  const calendarArr = getMonth(selectedDate.year, selectedDate.month);
 
   const selectedHandler = (el: string) => {
     setSelected(el);
@@ -127,4 +127,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Calendar;
+export default MonthlyCalendar;

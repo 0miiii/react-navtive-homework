@@ -1,4 +1,4 @@
-const getCalendar = (year: number, month: number) => {
+const getMonth = (year: number, month: number) => {
   const dateArr = ["Sun", "Mon", "The", "Wed", "Thu", "Fri", "Sat"];
   const firstDayOfSelectedMonth = new Date(year, month, 1).getDay();
   const lastDateOfSelectedMonth = new Date(year, month + 1, 0).getDate();
@@ -25,4 +25,4 @@ const getCalendar = (year: number, month: number) => {
   return dateArr;
 };
 
-export default getCalendar;
+export default getMonth;

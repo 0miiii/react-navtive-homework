@@ -1,7 +1,7 @@
-import Calendar from "../components/Calendar";
+import MonthlyCalendar from "../components/MonthlyCalendar";
 
 function CalendarScreen() {
-  return <Calendar />;
+  return <MonthlyCalendar />;
 }
 
 export default CalendarScreen;
