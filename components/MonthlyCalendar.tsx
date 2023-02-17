@@ -71,7 +71,7 @@ function MonthlyCalendar() {
       </View>
       <View style={styles.calendarBody}>
         {calendarArr[0].map((el, idx) => (
-          <TouchableOpacity key={idx}>
+          <TouchableOpacity key={idx} onPress={prevBtnDateHandler}>
             <CalendarEl el={el} grey />
           </TouchableOpacity>
         ))}
@@ -81,7 +81,7 @@ function MonthlyCalendar() {
           </TouchableOpacity>
         ))}
         {calendarArr[2].map((el, idx) => (
-          <TouchableOpacity key={idx}>
+          <TouchableOpacity key={idx} onPress={nextBtnDateHandler}>
             <CalendarEl el={el} grey />
           </TouchableOpacity>
         ))}
