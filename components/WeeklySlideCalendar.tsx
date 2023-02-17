@@ -77,7 +77,7 @@ function WeeklySlideCalendar() {
   return (
     <View style={styles.container}>
       <View style={styles.calendarNav}>
-        <Text>{`${month + 1} ${year}`}</Text>
+        <Text>{`${month} ${year}`}</Text>
       </View>
       <ScrollView
         horizontal
