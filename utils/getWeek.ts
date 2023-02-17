@@ -6,11 +6,15 @@ const getWeek = (page: number) => {
   const date = today.getDate();
   const dayOfWeek = today.getDay();
 
-  const selectedWeek = [];
+  const selectedWeek: { year: string; month: string; week: string[] } = {
+    year: year.toString(),
+    month: (month + 1).toString(),
+    week: [],
+  };
 
   for (var i = 0; i < 7; i++) {
     const day = new Date(year, month, date + (i - dayOfWeek));
-    selectedWeek.push(day.getDate().toString());
+    selectedWeek.week.push(day.getDate().toString());
   }
 
   return selectedWeek;
