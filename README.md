@@ -1,4 +1,4 @@
-# [Burn.Fit] Front-end 과제
+# Front-end 과제
 
 - 제출 기한 : 과제 안내 메일을 받으신 시점으로부터 1주일 이내
 
