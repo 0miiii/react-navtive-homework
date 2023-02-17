@@ -3,19 +3,16 @@ import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 
 import getWeek from "../utils/getWeek";
 import CalendarEl from "./CalendarEl";
+import useSelectedDate from "../hooks/useSelectedDate";
 
 function WeeklyCalendar() {
-  const dayElements = ["Sun", "Mon", "The", "Wed", "Thu", "Fri", "Sat"];
-  const [selected, setSelected] = useState("");
   const [weekPage, setWeekPage] = useState(0);
+  const [selectedDate, selectedDateHandler] = useSelectedDate(weekPage);
+  const dayElements = ["Sun", "Mon", "The", "Wed", "Thu", "Fri", "Sat"];
 
   const calendarArr = getWeek(weekPage).week;
   const year = getWeek(weekPage).year;
   const month = getWeek(weekPage).month;
-
-  const selectedHandler = (el: string) => {
-    setSelected(el);
-  };
 
   const prevBtnDateHandler = () => {
     setWeekPage((prevWeek) => prevWeek - 1);
@@ -24,10 +21,6 @@ function WeeklyCalendar() {
   const nextBtnDateHandler = () => {
     setWeekPage((prevWeek) => prevWeek + 1);
   };
-
-  useEffect(() => {
-    setSelected("");
-  }, [weekPage]);
 
   return (
     <View style={styles.container}>
@@ -43,8 +36,8 @@ function WeeklyCalendar() {
       </View>
       <View style={styles.calendarBody}>
         {calendarArr.map((el, idx) => (
-          <TouchableOpacity key={idx} onPress={() => selectedHandler(el)}>
-            <CalendarEl el={el} selected={selected} />
+          <TouchableOpacity key={idx} onPress={() => selectedDateHandler(el)}>
+            <CalendarEl el={el} selected={selectedDate} />
           </TouchableOpacity>
         ))}
       </View>

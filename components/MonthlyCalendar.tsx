@@ -3,32 +3,29 @@ import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 
 import getMonth from "../utils/getMonth";
 import CalendarEl from "./CalendarEl";
+import useSelectedDate from "../hooks/useSelectedDate";
 
-const currentDate = {
+const today = {
   year: new Date().getFullYear(),
   month: new Date().getMonth(),
 };
 
 function MonthlyCalendar() {
+  const [selectedCalendar, setSelectedCalendar] = useState(today);
+  const [selectedDate, selectedDateHandler] = useSelectedDate(selectedCalendar);
   const dayElements = ["Sun", "Mon", "The", "Wed", "Thu", "Fri", "Sat"];
-  const [selectedDate, setSelectedDate] = useState(currentDate);
-  const [selected, setSelected] = useState("");
-  const calendarArr = getMonth(selectedDate.year, selectedDate.month);
-
-  const selectedHandler = (el: string) => {
-    setSelected(el);
-  };
+  const calendarArr = getMonth(selectedCalendar.year, selectedCalendar.month);
 
   const prevBtnDateHandler = () => {
-    if (selectedDate.month <= 0) {
-      return setSelectedDate((prev) => {
+    if (selectedCalendar.month <= 0) {
+      return setSelectedCalendar((prev) => {
         return {
           year: prev.year - 1,
           month: 11,
         };
       });
     }
-    setSelectedDate((prev) => {
+    setSelectedCalendar((prev) => {
       return {
         ...prev,
         month: prev.month - 1,
@@ -37,15 +34,15 @@ function MonthlyCalendar() {
   };
 
   const nextBtnDateHandler = () => {
-    if (selectedDate.month >= 11) {
-      return setSelectedDate((prev) => {
+    if (selectedCalendar.month >= 11) {
+      return setSelectedCalendar((prev) => {
         return {
           year: prev.year + 1,
           month: 0,
         };
       });
     }
-    setSelectedDate((prev) => {
+    setSelectedCalendar((prev) => {
       return {
         ...prev,
         month: prev.month + 1,
@@ -53,15 +50,11 @@ function MonthlyCalendar() {
     });
   };
 
-  useEffect(() => {
-    setSelected("");
-  }, [selectedDate]);
-
   return (
     <View style={styles.container}>
       <View style={styles.flex}>
         <Button title="<" onPress={prevBtnDateHandler} />
-        <Text>{`${selectedDate.month + 1} ${selectedDate.year}`}</Text>
+        <Text>{`${selectedCalendar.month + 1} ${selectedCalendar.year}`}</Text>
         <Button title=">" onPress={nextBtnDateHandler} />
       </View>
       <View style={styles.flex}>
@@ -76,8 +69,8 @@ function MonthlyCalendar() {
           </TouchableOpacity>
         ))}
         {calendarArr[1].map((el, idx) => (
-          <TouchableOpacity key={idx} onPress={() => selectedHandler(el)}>
-            <CalendarEl el={el} selected={selected} />
+          <TouchableOpacity key={idx} onPress={() => selectedDateHandler(el)}>
+            <CalendarEl el={el} selected={selectedDate} />
           </TouchableOpacity>
         ))}
         {calendarArr[2].map((el, idx) => (
