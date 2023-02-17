@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
 
-interface IselectedCalendar {
-  year: number;
-  month: number;
-}
+type TselectedCalendar =
+  | {
+      year: number;
+      month: number;
+    }
+  | number;
 
 type Treturn = [
   selectedDate: string,
   selectedDateHandler: (date: string) => void
 ];
 
-const useSelectedDate = (selectedCalendar: IselectedCalendar): Treturn => {
+const useSelectedDate = (selectedCalendar: TselectedCalendar): Treturn => {
   const [selectedDate, setSelectedDate] = useState("");
 
   const selectedDateHandler = (date: string) => {
