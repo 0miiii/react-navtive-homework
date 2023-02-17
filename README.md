@@ -2,8 +2,6 @@
 
 - 제출 기한 : 과제 안내 메일을 받으신 시점으로부터 1주일 이내
 
-- 제출 방법 : github에 올리고 주소를 메일([admin@bunnit.kr](mailto:admin@bunnit.kr))로 회신
-
 <br>
 
 ## 설치
