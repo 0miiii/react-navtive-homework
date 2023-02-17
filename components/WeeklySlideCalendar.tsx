@@ -33,7 +33,7 @@ function WeeklySlideCalendar() {
   const [thisWeek, setThisWeek] = useState(getWeek(weekPage).week);
   const [nextWeek, setNextWeek] = useState(getWeek(weekPage + 1).week);
 
-  const year = getWeek(weekPage).week;
+  const year = getWeek(weekPage).year;
   const month = getWeek(weekPage).month;
 
   const handleCurrentChange = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
