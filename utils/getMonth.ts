@@ -25,6 +25,16 @@ const getMonth = (year: number, month: number) => {
     }
   }
 
+  const dateArrLength = dateArr.reduce((acc, cur) => acc + cur.length, 0);
+
+  if (dateArrLength / 7 === 6) {
+    return dateArr;
+  }
+
+  for (let i = 0; i < 7; i++) {
+    dateArr[2].push("");
+  }
+
   return dateArr;
 };
 
