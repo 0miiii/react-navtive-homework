@@ -6,14 +6,30 @@ interface Props {
   el: string;
   selected?: string;
   grey?: boolean;
+  selectedCalendar?: { year: number; month: number };
 }
 
-const CalendarEl: React.FC<Props> = ({ el, selected, grey }) => {
+const CalendarEl: React.FC<Props> = ({
+  el,
+  selected,
+  grey,
+  selectedCalendar,
+}) => {
+  const today = new Date().getDate();
+  const todayYear = new Date().getFullYear();
+  const todayMonth = new Date().getMonth();
+
+  const isToday =
+    selectedCalendar?.year === todayYear &&
+    selectedCalendar.month === todayMonth &&
+    el === today.toString();
+
   return (
     <View
       style={[
         styles.calendarEl,
         selected === el && selected !== "" && styles.selected,
+        isToday && styles.today,
       ]}
     >
       <Text style={grey && styles.grey}>{el}</Text>
@@ -36,6 +52,9 @@ const styles = StyleSheet.create({
   },
   grey: {
     color: "grey",
+  },
+  today: {
+    backgroundColor: "skyblue",
   },
 });
 

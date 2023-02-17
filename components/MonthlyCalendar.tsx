@@ -70,7 +70,11 @@ function MonthlyCalendar() {
         ))}
         {calendarArr[1].map((el, idx) => (
           <TouchableOpacity key={idx} onPress={() => selectedDateHandler(el)}>
-            <CalendarEl el={el} selected={selectedDate} />
+            <CalendarEl
+              el={el}
+              selected={selectedDate}
+              selectedCalendar={selectedCalendar}
+            />
           </TouchableOpacity>
         ))}
         {calendarArr[2].map((el, idx) => (
