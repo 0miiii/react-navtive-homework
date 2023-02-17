@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 
 import getWeek from "../utils/getWeek";
